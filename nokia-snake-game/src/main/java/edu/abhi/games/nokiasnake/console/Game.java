@@ -1,7 +1,9 @@
 package edu.abhi.games.nokiasnake.console;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 // To represent Snake Game
 public class Game {
@@ -80,6 +82,7 @@ public class Game {
                     } else if (nextCell.getCellType() == CellType.EMPTY){
                         snake.move(nextCell);
                     }
+                    showState();
                 }
             }
         }
@@ -107,9 +110,10 @@ public class Game {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Going to start game");
 
-        Game newGame = new Game(new Board(4, 4));
+        Game newGame = new Game(new Board(10, 10));
 
         try(Scanner sc = new Scanner(System.in)) {
+            newGame.showState();
             while (true) {
                 Thread.sleep(3000);
 
@@ -127,5 +131,14 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showState() {
+        Arrays.stream(board.getCells()).map(row -> Arrays.stream(row).map(cell -> cell.getCellType().getDisplayCode())
+                .collect(Collectors.joining("|", "", "\n"))).forEach(System.out::print);
+
+//        for(Cell[] row : board.getCells())
+//            System.out.println(Arrays.stream(row).map(cell -> cell.getCellType().getDisplayCode())
+//                    .collect(Collectors.joining("|", "", "\n")));
     }
 }

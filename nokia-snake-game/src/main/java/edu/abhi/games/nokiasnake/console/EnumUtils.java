@@ -4,9 +4,19 @@ import java.util.Arrays;
 
 // Enum for different cell types
 enum CellType {
-    EMPTY, //Unoccupied Cell
-    FOOD, //Current position of the Egg/Snake-food
-    SNAKE_NODE //Nodes currently occupied by the Snake
+    EMPTY(" "), //Unoccupied Cell
+    FOOD("@"), //Current position of the Egg/Snake-food
+    SNAKE_NODE("*"); //Nodes currently occupied by the Snake
+
+    private String displayCode;
+
+    CellType(String displayCode) {
+        this.displayCode = displayCode;
+    }
+
+    public String getDisplayCode() {
+        return displayCode;
+    }
 }
 
 enum Direction {

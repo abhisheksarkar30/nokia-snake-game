@@ -1,11 +1,13 @@
 package edu.abhi.games.nokiasnake.console;
 
 // To represent a snake
-import java.util.LinkedList;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class Snake {
 
-    private LinkedList<Cell> snakePartList = new LinkedList<>();
+    private Deque<Cell> snakePartList = new ArrayDeque<>();
 
     public Snake(Cell initPos) { moveHead(initPos); }
 
@@ -33,11 +35,11 @@ public class Snake {
         return (getHead() == nextCell) || (nextCell.getCellType() == CellType.SNAKE_NODE);
     }
 
-    public LinkedList<Cell> getSnakePartList() {
+    public Deque<Cell> getSnakePartList() {
         return snakePartList;
     }
 
-    public void setSnakePartList(LinkedList<Cell> snakePartList) {
+    public void setSnakePartList(Deque<Cell> snakePartList) {
         this.snakePartList = snakePartList;
     }
 
