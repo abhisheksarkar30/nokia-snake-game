@@ -67,7 +67,7 @@ public class Game {
     public void update() {
         if (!gameOver) {
             if (direction != Direction.NONE) {
-                System.out.println("Going to update the game");
+//                System.out.println("Going to update the game");
                 Cell nextCell = getNextCell(snake.getHead());
 
                 if (snake.checkCrash(nextCell)) {
@@ -89,7 +89,7 @@ public class Game {
     }
 
     private Cell getNextCell(Cell currentPosition) {
-        System.out.println("Going to find next cell");
+//        System.out.println("Going to find next cell");
         int row = currentPosition.getRow();
         int col = currentPosition.getCol();
 
@@ -115,7 +115,7 @@ public class Game {
         try(Scanner sc = new Scanner(System.in)) {
             newGame.showState();
             while (true) {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
 
                 if (System.in.available() != 0) {
                     Direction direction = Direction.getDirectionByCharCode(sc.next());
@@ -134,8 +134,10 @@ public class Game {
     }
 
     private void showState() {
+        System.out.println();
         Arrays.stream(board.getCells()).map(row -> Arrays.stream(row).map(cell -> cell.getCellType().getDisplayCode())
-                .collect(Collectors.joining("|", "", "\n"))).forEach(System.out::print);
+                .collect(Collectors.joining(".", "|", "|\n"))).forEach(System.out::print);
+        System.out.println();
 
 //        for(Cell[] row : board.getCells())
 //            System.out.println(Arrays.stream(row).map(cell -> cell.getCellType().getDisplayCode())

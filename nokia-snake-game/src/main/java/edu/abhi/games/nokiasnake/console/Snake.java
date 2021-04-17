@@ -18,11 +18,11 @@ public class Snake {
 
     public void grow(Cell nextCell) {
         moveHead(nextCell);
-        System.out.println("Snake is growing to size = " + snakePartList.size());
+//        System.out.println("Snake is growing to size = " + snakePartList.size());
     }
 
     public void move(Cell nextCell) {
-        System.out.println("Snake is moving to " + nextCell.getRow() + " " + nextCell.getCol());
+//        System.out.println("Snake is moving to " + nextCell.getRow() + " " + nextCell.getCol());
         Cell tail = snakePartList.removeLast();
         tail.setCellType(CellType.EMPTY);
 
@@ -30,7 +30,7 @@ public class Snake {
     }
 
     public boolean checkCrash(Cell nextCell) {
-        System.out.println("Going to check for Crash");
+//        System.out.println("Going to check for Crash");
 //        return getHead() == nextCell || snakePartList.stream().anyMatch(cell -> cell == nextCell);
         return (getHead() == nextCell) || (nextCell.getCellType() == CellType.SNAKE_NODE);
     }
